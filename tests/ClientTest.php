@@ -178,10 +178,11 @@ class ClientTest extends AbstractTestCase
     {
         $client = $this->getClient();
 
-        $result = $client->checkVerificationStatus($status->request_id);
+        $result = $client->checkVerificationStatus($status->request_id, $this->test_code);
 
         $this->assertInstanceOf(RequestStatus::class, $result);
         $this->assertInstanceOf(VerificationStatus::class, $result->verification_status);
+        $this->assertTrue($result->verification_status->code_entered == $this->test_code);
         $this->assertInstanceOf(DeliveryStatus::class, $result->delivery_status);
     }
 

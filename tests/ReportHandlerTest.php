@@ -5,7 +5,9 @@ namespace Nullform\TelegramGateway\Tests;
 use Nullform\TelegramGateway\Exceptions\ReportBadPayloadException;
 use Nullform\TelegramGateway\Exceptions\ReportDataCheckException;
 use Nullform\TelegramGateway\ReportHandler;
+use Nullform\TelegramGateway\Types\DeliveryStatus;
 use Nullform\TelegramGateway\Types\RequestStatus;
+use Nullform\TelegramGateway\Types\VerificationStatus;
 
 class ReportHandlerTest extends AbstractTestCase
 {
@@ -75,10 +77,11 @@ class ReportHandlerTest extends AbstractTestCase
         $this->assertTrue($status->request_id === '923583492968596');
         $this->assertTrue($status->phone_number === '1999123456726');
         $this->assertTrue($status->request_cost === 0);
+        $this->assertTrue($status->is_refunded === null);
         $this->assertTrue($status->remaining_balance === null);
-        $this->assertTrue($status->delivery_status->status === 'revoked');
+        $this->assertTrue($status->delivery_status->status === DeliveryStatus::STATUS_REVOKED);
         $this->assertTrue($status->delivery_status->updated_at === 1733663990);
-        $this->assertTrue($status->verification_status->status === 'expired');
+        $this->assertTrue($status->verification_status->status === VerificationStatus::STATUS_EXPIRED);
         $this->assertTrue($status->verification_status->updated_at === 1733663989);
         $this->assertTrue($status->verification_status->code_entered === null);
     }
