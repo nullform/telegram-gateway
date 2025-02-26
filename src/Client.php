@@ -180,10 +180,10 @@ class Client
      *
      * Returns True if the revocation request was received.
      *
-     * However, this does not guarantee that the message will be deleted. For example, it will not be removed
-     * if the recipient has already read it.
+     * However, this does not guarantee that the message will be deleted. For example, if the message
+     * has already been delivered or read, it will not be removed.
      *
-     * @param string $requestId
+     * @param string $requestId The unique identifier of the request whose verification message you want to revoke.
      * @return bool
      * @throws HttpException
      * @throws TelegramGatewayApiException

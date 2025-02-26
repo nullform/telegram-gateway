@@ -34,6 +34,13 @@ class RequestStatus extends AbstractType
     public $request_cost;
 
     /**
+     * Optional. If True, the request fee was refunded.
+     *
+     * @var null|bool
+     */
+    public $is_refunded = null;
+
+    /**
      * Optional. Remaining balance in credits. Returned only in response to a request that incurs a charge.
      *
      * @var null|float|int

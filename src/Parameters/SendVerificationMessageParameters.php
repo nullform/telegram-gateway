@@ -66,12 +66,11 @@ class SendVerificationMessageParameters extends AbstractParameters
     public $payload = null;
 
     /**
-     * Time-to-live (in seconds) before the message expires and is deleted.
+     * Time-to-live (in seconds) before the message expires.
      *
-     * The message will not be deleted if it has already been read.
-     * If not specified, the message will not be deleted.
+     * If the message is not delivered or read within this time, the request fee will be refunded.
      *
-     * Supported values are from 60 to 86400.
+     * Supported values are from 30 to 3600.
      *
      * @var null|int
      */
