@@ -18,6 +18,23 @@ First, you need to get an access token from your Telegram Gateway account settin
 
 ## Usage examples
 
+Simplest example:
+
+```php
+$client = new \Nullform\TelegramGateway\Client('API Token');
+$parameters = new \Nullform\TelegramGateway\Parameters\SendVerificationMessageParameters();
+$parameters->code = '123456';
+
+try {
+    $requestStatus = $client->sendVerificationMessage('+19999999999', $parameters);
+    // ...
+} catch (\Exception $exception) {
+    // ...
+}
+```
+
+Extended example:
+
 ```php
 use Nullform\TelegramGateway\Client;
 use Nullform\TelegramGateway\Parameters\SendVerificationMessageParameters;
@@ -33,7 +50,7 @@ $client->setCurlOptions([CURLOPT_TIMEOUT => 10]); // ... or multiple options.
 $parameters = new SendVerificationMessageParameters();
 $parameters->code_length = 6; // Set your own code or code length.
 $parameters->payload = 'custom data'; // Custom payload.
-$parameters->ttl = 60; // Time-to-live (1 minute) before the message expires and is deleted.
+$parameters->ttl = 60; // Time-to-live (1 minute) before the message expires.
 $parameters->callback_url = 'https://example.com/webhook/telegram-gateway'; // Your callback URL.
 $parameters->sender_username = 'my_tg_channel'; // Channel from which the code will be sent.
 
